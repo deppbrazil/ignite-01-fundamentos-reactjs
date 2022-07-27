@@ -1,8 +1,10 @@
-import { Post } from "./Post.jsx";
+import { Post } from "./Post";
+import { Header } from "./components/Header"
 
 export function App() {
   return (
     <>
+      <Header />
       <Post
         title="Post 1"
         author="Mir"
