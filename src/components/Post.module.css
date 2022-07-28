@@ -117,3 +117,7 @@
 .comentForm button[type=submit]:hover {
   background: var(--success-300);
 }
+
+.commentList {
+  margin-top: 2rem;
+}
