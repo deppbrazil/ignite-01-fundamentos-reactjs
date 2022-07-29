@@ -5,7 +5,7 @@ import styles from "./Comment.module.css";
 const imgAvatar =
   "https://github.com/deppbrazil.png"
 
-export function Comment() {
+export function Comment({ content }) {
   return (
     <div className={styles.comment}>
       <Avatar src={imgAvatar} hasBorder={false} />
@@ -26,7 +26,7 @@ export function Comment() {
           </header>
 
           <p>
-            Muito bom....
+            {content}
           </p>
         </div>
 
