@@ -58,19 +58,19 @@
   color: var(--success-300);
 }
 
-.comentForm {
+.commentForm {
   width: 100%;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--gray-600);
 }
 
-.comentForm > strong {
+.commentForm > strong {
   line-height: 1.6;
   color: var(--gray-100);
 }
 
-.comentForm textarea {
+.commentForm textarea {
   width: 100%;
   height: 6rem;
   line-height: 1.6;
@@ -83,17 +83,17 @@
   background: var(--gray-900);
 }
 
-.comentForm footer {
+.commentForm footer {
   max-height: 0;
   visibility: hidden;
 }
 
-.comentForm:focus-within footer {
+.commentForm:focus-within footer {
   max-height: none;
   visibility: visible;
 }
 
-.comentForm button[type=submit] {
+.commentForm button[type=submit] {
   font-weight: bold;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
@@ -105,8 +105,13 @@
   transition: background-color 0.2s;
 }
 
-.comentForm button[type=submit]:hover {
+.commentForm button[type=submit]:not(:disabled):hover {
   background: var(--success-300);
+}
+
+.commentForm button[type=submit]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .commentList {
