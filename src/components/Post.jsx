@@ -7,40 +7,43 @@ import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
 export function Post({ author, publishedAt, content }) {
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
 
-  const [newCommentText, setNewCommentText] = useState("")
+  const [newCommentText, setNewCommentText] = useState("");
 
-  const publishedDateFormatted =
-    format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
-      locale: ptBR
-    })
+  const publishedDateFormatted = format(
+    publishedAt,
+    "d 'de' LLLL 'às' HH:mm'h'",
+    {
+      locale: ptBR,
+    }
+  );
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
-    addSuffix: true
-  })
+    addSuffix: true,
+  });
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event) {
     event.preventDefault();
 
     setComments([...comments, newCommentText]);
     setNewCommentText("");
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event) {
     event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
   }
 
-  function handleNewCommentInvalid() {
+  function handleNewCommentInvalid(event) {
     event.target.setCustomValidity("Esse campo é obrigatório");
   }
 
   function deleteComment(commentToDelete) {
-    const commentsWithoutDeleteOne = comments.filter(comment => {
-      return comment !== commentToDelete;
-    })
+    const commentsWithoutDeleteOne = comments.filter(
+      (comment) => comment !== commentToDelete
+    );
 
     setComments(commentsWithoutDeleteOne);
   }
@@ -58,24 +61,32 @@ export function Post({ author, publishedAt, content }) {
           </div>
         </div>
 
-        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
+        <time
+          title={publishedDateFormatted}
+          dateTime={publishedAt.toISOString()}
+        >
           {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        {content.map(line => {
+        {content.map((line) => {
           if (line.type === "paragraph") {
             return <p key={line.content}>{line.content}</p>;
-          } else if (line.type === "link") {
-            return <p key={line.content}><a href="#">{line.content}</a></p>;
+          }
+          if (line.type === "link") {
+            return (
+              <p key={line.content}>
+                <a href="#">{line.content}</a>
+              </p>
+            );
           }
         })}
       </div>
 
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
+        {" "}
         <strong>Deixe seu feedback</strong>
-
         <textarea
           name="comment"
           placeholder="Deixe seu comentário"
@@ -84,7 +95,6 @@ export function Post({ author, publishedAt, content }) {
           onInvalid={handleNewCommentInvalid}
           required
         />
-
         <footer>
           <button type="submit" disabled={isNewCommentEmpty}>
             Publicar
@@ -93,16 +103,14 @@ export function Post({ author, publishedAt, content }) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map(comment => {
-          return (
-            <Comment
-              key={comment}
-              content={comment}
-              onDeleteComment={deleteComment}
-            />
-          )
-        })}
+        {comments.map((comment) => (
+          <Comment
+            key={comment}
+            content={comment}
+            onDeleteComment={deleteComment}
+          />
+        ))}
       </div>
     </article>
-  )
+  );
 }

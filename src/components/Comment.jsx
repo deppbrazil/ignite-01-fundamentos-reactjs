@@ -3,8 +3,7 @@ import { useState } from "react";
 import { Avatar } from "./Avatar";
 import styles from "./Comment.module.css";
 
-const imgAvatar =
-  "https://github.com/deppbrazil.png"
+const imgAvatar = "https://github.com/deppbrazil.png";
 
 export function Comment({ content, onDeleteComment }) {
   const [likeCount, setLikeCount] = useState(0);
@@ -14,9 +13,7 @@ export function Comment({ content, onDeleteComment }) {
   }
 
   function handleLikeComment() {
-    setLikeCount(state => {
-      return state + 1
-    });
+    setLikeCount((state) => state + 1);
   }
 
   return (
@@ -33,23 +30,26 @@ export function Comment({ content, onDeleteComment }) {
               </time>
             </div>
 
-            <button onClick={handleDeleteComment} title="Deletar comentário">
+            <button
+              onClick={handleDeleteComment}
+              title="Deletar comentário"
+              type="button"
+            >
+              {" "}
               <Trash size={24} />
             </button>
           </header>
 
-          <p>
-            {content}
-          </p>
+          <p>{content}</p>
         </div>
 
         <footer>
-          <button onClick={handleLikeComment}>
+          <button onClick={handleLikeComment} type="button">
             <ThumbsUp />
             Aplaudir <span>{likeCount}</span>
           </button>
         </footer>
       </div>
     </div>
-  )
+  );
 }

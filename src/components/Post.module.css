@@ -93,7 +93,7 @@
   visibility: visible;
 }
 
-.commentForm button[type=submit] {
+.commentForm button[type="submit"] {
   font-weight: bold;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
@@ -105,11 +105,11 @@
   transition: background-color 0.2s;
 }
 
-.commentForm button[type=submit]:not(:disabled):hover {
+.commentForm button[type="submit"]:not(:disabled):hover {
   background: var(--success-300);
 }
 
-.commentForm button[type=submit]:disabled {
+.commentForm button[type="submit"]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
