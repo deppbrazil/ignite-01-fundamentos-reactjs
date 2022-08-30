@@ -19,6 +19,7 @@ const posts = [
         type: "paragraph",
         content: "Fala galeraa 👋",
       },
+
       {
         type: "paragraph",
         content:

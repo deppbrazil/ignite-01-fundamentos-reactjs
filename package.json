@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.ts,.jsx,.tsx src",
-    "formmat": "npm run lint --fix & npm run prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    "lint": "eslint src -c .eslintrc --ext js,jsx"
   },
   "dependencies": {
     "date-fns": "^2.29.1",
